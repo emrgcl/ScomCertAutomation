@@ -76,10 +76,10 @@ $Thumbprint=$Matches['Thumbprint']
 
 if ($Thumbprint){
 
-    $Expression = "certutil -p $PassWord -exportpfx My $Thumbprint $PfxPath"
+    $Expression = "certutil -p $PassWord -exportpfx My $Thumbprint `"NoChain,NoRoot`""
     Invoke-expression $Expression | Out-Null
 
-    $PasswordMaskedExpression = "certutil -p xxx -exportpfx My $Thumbprint $PfxPath"
+    $PasswordMaskedExpression = "certutil -p xxx -exportpfx My $Thumbprint $PfxPath `"NoChain,NoRoot`""
     Write-Log  "Invoking command: '$PasswordMaskedExpression'"
 
 }
